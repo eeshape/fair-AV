@@ -83,7 +83,7 @@ def generate_preds(model, data_imgs, folder):
 
     # get date and time, create a folder, save eval_imgs and eval stats as torch.load
     folder_name = f"Carla_data/Preds/{folder}"
-    os.mkdir(folder_name)
+    os.makedirs(folder_name, exist_ok=True)
     output_pth = f"{folder_name}/preds_detr_r50.json"
     with open(output_pth, "w") as f:
         json.dump(preds, f)

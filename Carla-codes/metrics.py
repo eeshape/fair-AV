@@ -346,10 +346,11 @@ def main():
     parser.add_argument('--skin_tone', type=int, default=10, help='skin tone to calculate metrics for')
     parser.add_argument('--output_pth', type=str, default="test", help='output path for metrics')
     parser.add_argument('--all', action='store_true', help='calculate metrics for all skin tones')
+    parser.add_argument('--folder', type=str, default="0003.0.0.0", help='folder name for predictions and annotations')
     args = parser.parse_args()
 
-    ground_truth_file = f"Carla_data/Preds/0001.0.0.0/annotations.json"
-    predicted_boxes_file = f"Carla_data/Preds/0001.0.0.0/preds_detr_r50.json"
+    ground_truth_file = f"Carla_data/Preds/{args.folder}/annotations.json"
+    predicted_boxes_file = f"Carla_data/Preds/{args.folder}/preds_detr_r50.json"
 
     # filter out the images that are not in the ground truth. Some simulated rgb images may not have any pedestrians
     filter_preds(ground_truth_file, predicted_boxes_file) 
